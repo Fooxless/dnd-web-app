@@ -1,7 +1,8 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Image from 'next/image'
 
 interface LoginProps {
     setUserLogged: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,11 +30,14 @@ const Login = ({ setUserLogged }: LoginProps) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="h-screen bg-[#1e293b] grid place-items-center">
-                <div className="bg-[#334155] text-slate-100 grid place-items-center rounded-lg px-5 pt-5">
-                    <button className="bg-[#6b7280] hover:bg-[#4b5563] text-gray-800 font-semibold py-2 px-4 border border-[#6b7280] rounded shadow"
-                        onClick={() => signIn()}>Sign in using GitHub</button>
-                    <p className='pb-6 pt-4'>Please log into the site using your GitHub Account.</p>
+            <main className="h-screen bg-[#1e293b] grid place-items-center ">
+                <div>
+                    <Image src="/logoText.png" alt="me" width="600" height="600" />
+                    <div className="bg-[#334155] text-slate-100 grid place-items-center rounded-lg pt-5 -mt-24 ">
+                        <button className="bg-[#6b7280] hover:bg-[#4b5563] text-gray-800 font-semibold py-2 px-4 border border-[#6b7280] rounded shadow"
+                            onClick={() => signIn()}>Sign in using GitHub</button>
+                        <p className='pb-6 pt-4'>Please log into the site using your GitHub Account.</p>
+                    </div>
                 </div>
             </main>
         </>

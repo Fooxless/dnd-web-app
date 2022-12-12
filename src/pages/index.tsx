@@ -13,10 +13,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className='text-white'>
         <div>
 
-          <button onClick={() => signOut()}>Sign out</button>
+          Content
 
 
         </div>
