@@ -7,8 +7,8 @@ import { signOut, useSession } from "next-auth/react";
 const navigation = [
     { name: 'Monsters', href: '#', current: true },
     { name: 'Encounters', href: '#', current: false },
-    { name: 'Spells', href: '#', current: false },
-    { name: 'Items', href: '#', current: false },
+    // { name: 'Spells', href: '#', current: false },
+    // { name: 'Items', href: '#', current: false },
 ]
 
 function classNames(...classes: any) {
@@ -17,7 +17,7 @@ function classNames(...classes: any) {
 
 export default function Navbar() {
     const { data: session } = useSession();
-
+    console.log(session)
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -93,8 +93,14 @@ export default function Navbar() {
                                                     className="h-8 w-8 rounded-full"
                                                 />
                                             )}
+
+                                            <div className='text-white mx-2 mt-2'>
+                                                {session?.user?.name}
+                                            </div>
                                         </Menu.Button>
+
                                     </div>
+
                                     <Transition
                                         as={Fragment}
                                         enter="transition ease-out duration-100"
@@ -138,7 +144,9 @@ export default function Navbar() {
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
+
                             </div>
+
                         </div>
                     </div>
 
