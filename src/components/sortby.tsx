@@ -3,9 +3,11 @@ import DropDown from './dropdown'
 
 const sortOptions = [
     { name: "No Sort", value: "" },
-    { name: "Price (High)", value: "price_high" },
-    { name: "Price (Low)", value: "price_low" },
-    { name: "Name (A-Z)", value: "name" }
+    { name: "Name (A-Z)", value: "name" },
+    { name: "Type", value: "type" },
+    { name: "Alignment", value: "alignment" },
+    { name: "HP (High)", value: "-hit_points" },
+    { name: "HP (Low)", value: "hit_points" },
 ];
 
 export interface Props {

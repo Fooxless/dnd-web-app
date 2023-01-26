@@ -5,7 +5,8 @@ const sortOptions = [
     { name: "No Filter", value: "" },
     { name: "Price (High)", value: "price_high" },
     { name: "Price (Low)", value: "price_low" },
-    { name: "Name (A-Z)", value: "name" }
+    { name: "Name (A-Z)", value: "name" },
+
 ];
 
 export interface Props {

@@ -8,8 +8,10 @@ export default async function monsters(req: NextApiRequest, res: NextApiResponse
     return res.status(405).json({ message: "Method not allowed" });
   }
   else {
+
     const data = JSON.parse(req.body);
-    const url = `https://api.open5e.com/monsters/?ordering=challenge_rating&page=${data.page}`;
+    console.log(data.page)
+    const url = `https://api.open5e.com/monsters/?ordering=${data.sort}&page=${data.page}&search=${data.searchquery}`;
     console.log("data", data);
     await axios.get(url, { headers: { "Accept-Encoding": "gzip,deflate,compress" } })
       .then(function (response: any) {

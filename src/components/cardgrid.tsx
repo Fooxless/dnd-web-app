@@ -2,20 +2,20 @@ import Image from 'next/image'
 import Card from "./card";
 import { useState, useEffect } from 'react'
 
-export default function CardGrid() {
+export default function CardGrid(props: any) {
     const [monsters, setData] = useState<any>(null)
     const [isLoading, setLoading] = useState(false)
     const [page, setPage] = useState(1)
-
+    const { filter, sort, searchquery } = props;
     useEffect(() => {
         setLoading(true)
-        fetch('/api/monsters', { method: 'POST', body: JSON.stringify({ page: page }) })
+        fetch('/api/monsters', { method: 'POST', body: JSON.stringify({ page: page, sort: sort, filter: filter, searchquery: searchquery }) })
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
                 setLoading(false)
             })
-    }, [page])
+    }, [filter, page, searchquery, sort])
 
     console.log("monsterdata", monsters)
 
@@ -42,23 +42,25 @@ export default function CardGrid() {
                     <div className='grid items-grid gap-8 px-6 place-items-center pt-8'>
 
                         {monsters?.results.map((monster: any) => (
-                            <Card key={monster.index} monster={monster} />
+                            <div key={monster?.name}>
+                                {monster !== null ? (<Card key={monster?.name} monster={monster} />) : (<></>)}
+                            </div>
                         ))}
 
                     </div>
                     <div className='flex justify-center dark:text-gray-50 mt-8'>
-                        {page === 1 ? (<svg className="mx-10 dark:text-gray-500" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-                            clip-rule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                        {page === 1 ? (<svg className="mx-10 dark:text-gray-500" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
+                            clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                             onClick={clickBack}>
                             <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" /></svg>)
-                            : (<svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-                                clip-rule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                            : (<svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
+                                clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                                 onClick={clickBack}>
                                 <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" /></svg>)}
 
                         Page {page}
-                        <svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-                            clip-rule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                        <svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
+                            clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                             onClick={clickForward}>
                             <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" /></svg>
                     </div>
