@@ -39,8 +39,8 @@ function Filter({ defaultValue, options, setSortby }: FilterProps) {
             </div>
             {open && (
                 <>
-                    <div className="fixed top-0 bottom-0 left-0 right-0 z-10 opacity-20 cursor-default" ></div>
-                    <div className=" absolute flex flex-col items-start top-6 z-20 bg-zamber-light rounded-md drop-shadow-2xl p-1">
+                    <div className="fixed top-0 bottom-0 left-0 right-0 z-10 opacity-20 cursor-default " ></div>
+                    <div className=" absolute flex flex-col items-start top-6 z-20 bg-zamber-light rounded-md drop-shadow-2xl dark:bg-gray-900 p-1">
                         {options.map((option) => (
                             <div
                                 className={`w-full flex justify-start dark:bg-gray-900 mt-1 hover:bg-gray-800 p-2 rounded-md`}

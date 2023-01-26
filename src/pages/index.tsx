@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
       <main className='text-white pb-20 pt-6 '>
         <div>
-          <div className='ml-24 relative sm:flex sm:ml-10 justify-center'>
+          <div className='ml-20 relative sm:flex sm:ml-10 justify-center'>
             <Search />
             <div className='sm:ml-10 flex mt-6 sm:mt-0'>
               <Sorter setSortby={setSortby} />
