@@ -2,15 +2,17 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession, signIn, signOut } from "next-auth/react"
 import Grid from "../components/cardgrid";
-
+import Sorter from "../components/sortby";
+import Filter from "../components/filterby";
+import Search from "../components/searchbar";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
   const { data: session } = useSession()
+  const [sortBy, setSortby] = useState("");
+  const [filterby, setFilterby] = useState("");
 
-
-
-
-
+  console.log(sortBy)
   return (
     <div className='page-container bg-[#1e293b]'>
       <Head>
@@ -19,10 +21,18 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className='text-white pb-20'>
+      <main className='text-white pb-20 pt-6 '>
+        <div>
+          <div className='ml-24 relative sm:flex sm:ml-10 justify-center'>
+            <Search />
+            <div className='sm:ml-10 flex mt-6 sm:mt-0'>
+              <Sorter setSortby={setSortby} />
+              <Filter setSortby={setFilterby} />
+            </div>
 
-        <Grid />
-
+          </div>
+          <Grid />
+        </div>
       </main>
     </div >
   )

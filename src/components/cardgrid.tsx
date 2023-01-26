@@ -21,16 +21,13 @@ export default function CardGrid() {
 
     function clickForward() {
         setPage(page + 1);
-        console.log('You clicked forward.');
     }
 
     function clickBack() {
         if (page !== 1) {
             setPage(page - 1);
         }
-        console.log('You clicked back.');
     }
-
 
     return (
         <div>
@@ -42,7 +39,7 @@ export default function CardGrid() {
                     </svg>
                 </div>)
                 : (<div>
-                    <div className='grid items-grid gap-8 px-6 place-items-center pt-10'>
+                    <div className='grid items-grid gap-8 px-6 place-items-center pt-8'>
 
                         {monsters?.results.map((monster: any) => (
                             <Card key={monster.index} monster={monster} />

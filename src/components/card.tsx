@@ -4,26 +4,9 @@ import { useState, useEffect } from 'react'
 
 export default function Card({ monster: monster }: any | undefined) {
 
-  // const [monster, setMonster] = useState<any>(null)
-  // const [isLoading, setLoading] = useState(false)
   function cardClicked() {
     console.log("Have been clicked")
   }
-
-  // useEffect(() => {
-  //   setLoading(true)
-  //   fetch('/api/monster', {
-  //     method: "POST",
-  //     body: JSON.stringify({ monster: monsterName })
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setMonster(data)
-  //       setLoading(false)
-  //     })
-  // }, [monsterName])
-
-  // console.log("monster", monster)
 
   return (
     <div>
