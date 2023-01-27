@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Card from "./card";
+import Pagination from "./paginationgrid";
 import { useState, useEffect } from 'react'
 
 export default function CardGrid(props: any) {
@@ -20,16 +21,6 @@ export default function CardGrid(props: any) {
 
     console.log("monsterdata", monsters)
 
-    function clickForward() {
-        setPage(page + 1);
-    }
-
-    function clickBack() {
-        if (page !== 1) {
-            setPage(page - 1);
-        }
-    }
-
     return (
         <div>
             {isLoading ? (
@@ -49,25 +40,8 @@ export default function CardGrid(props: any) {
                         ))}
 
                     </div>
-                    <div className='flex justify-center dark:text-gray-50 mt-8'>
-                        {page === 1 ? (<svg className="mx-10 dark:text-gray-500" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
-                            clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" /></svg>)
-                            : (<svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
-                                clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                                onClick={clickBack}>
-                                <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" /></svg>)}
+                    <Pagination page={page} setPage={setPage} count={monsters?.count} />
 
-                        Page {page}
-                        {monsters?.count - (page * 20) > 0 ? (<> <svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
-                            clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                            onClick={clickForward}>
-                            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" /></svg></>)
-                            : (<> <svg className="mx-10 dark:text-gray-500" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
-                                clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" /></svg></>)}
-
-                    </div>
                 </div>)}
 
 
