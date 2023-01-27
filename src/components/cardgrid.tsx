@@ -5,15 +5,16 @@ import { useState, useEffect } from 'react'
 export default function CardGrid(props: any) {
     const [monsters, setData] = useState<any>(null)
     const [isLoading, setLoading] = useState(false)
-    const [page, setPage] = useState(1)
-    const { filter, sort, searchquery } = props;
+
+    const { filter, sort, searchquery, page, setPage } = props;
+    console.log("page", page)
     useEffect(() => {
         setLoading(true)
         fetch('/api/monsters', { method: 'POST', body: JSON.stringify({ page: page, sort: sort, filter: filter, searchquery: searchquery }) })
             .then((res) => res.json())
             .then((data) => {
-                setData(data)
-                setLoading(false)
+                setData(data);
+                setLoading(false);
             })
     }, [filter, page, searchquery, sort])
 
@@ -50,8 +51,7 @@ export default function CardGrid(props: any) {
                     </div>
                     <div className='flex justify-center dark:text-gray-50 mt-8'>
                         {page === 1 ? (<svg className="mx-10 dark:text-gray-500" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
-                            clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                            onClick={clickBack}>
+                            clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" /></svg>)
                             : (<svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
                                 clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
@@ -59,10 +59,14 @@ export default function CardGrid(props: any) {
                                 <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" /></svg>)}
 
                         Page {page}
-                        <svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
+                        {monsters?.count - (page * 20) > 0 ? (<> <svg className="mx-10 cursor-pointer" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
                             clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                             onClick={clickForward}>
-                            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" /></svg>
+                            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" /></svg></>)
+                            : (<> <svg className="mx-10 dark:text-gray-500" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
+                                clipRule="evenodd" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" /></svg></>)}
+
                     </div>
                 </div>)}
 

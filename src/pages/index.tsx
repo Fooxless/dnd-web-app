@@ -12,9 +12,11 @@ const Home: NextPage = () => {
   const [sortBy, setSortby] = useState("");
   const [filterby, setFilterby] = useState("");
   const [searchquery, setSearchquery] = useState("")
-  console.log("sortBy", { sortBy })
-  console.log("filterby", { filterby })
-  console.log("searchquery", { searchquery })
+  const [page, setPage] = useState(1)
+
+  // console.log("sortBy", { sortBy })
+  // console.log("filterby", { filterby })
+  // console.log("searchquery", { searchquery })
   // Word on Count
   return (
     <div className='page-container bg-[#1e293b]'>
@@ -27,14 +29,14 @@ const Home: NextPage = () => {
       <main className='text-white pb-20 pt-6 '>
         <div>
           <div className='ml-20 relative sm:flex sm:ml-10 justify-center'>
-            <Search setSearchquery={setSearchquery} />
+            <Search setSearchquery={setSearchquery} setPage={setPage} />
             <div className='sm:ml-10 flex mt-6 sm:mt-0'>
               <Sorter setSortby={setSortby} />
               {/* <Filter setSortby={setFilterby} /> */}
             </div>
 
           </div>
-          <Grid filter={filterby} sort={sortBy} searchquery={searchquery} />
+          <Grid filter={filterby} sort={sortBy} searchquery={searchquery} setPage={setPage} page={page} />
         </div>
       </main>
     </div >

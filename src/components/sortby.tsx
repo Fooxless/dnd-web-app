@@ -8,6 +8,7 @@ const sortOptions = [
     { name: "Alignment", value: "alignment" },
     { name: "HP (High)", value: "-hit_points" },
     { name: "HP (Low)", value: "hit_points" },
+    // { name: "CR (High)", value: "challange_rating" },
 ];
 
 export interface Props {

@@ -5,12 +5,13 @@ export interface Props {
 }
 
 export default function Search(props: any) {
-    const { setSearchquery } = props;
+    const { setSearchquery, setPage } = props;
     const [searchquery, setSearchquerylocal] = useState("")
     console.log("searchquery", searchquery)
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+        setPage(1);
         setSearchquery(searchquery);
     }
 

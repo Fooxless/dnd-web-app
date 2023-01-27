@@ -11,7 +11,7 @@ export default async function monsters(req: NextApiRequest, res: NextApiResponse
 
     const data = JSON.parse(req.body);
     console.log(data.page)
-    const url = `https://api.open5e.com/monsters/?ordering=${data.sort}&page=${data.page}&search=${data.searchquery}`;
+    const url = `https://api.open5e.com/monsters/?ordering=${data.sort}&page=${data.page}&search=${data.searchquery}&limit=20`;
     console.log("data", data);
     await axios.get(url, { headers: { "Accept-Encoding": "gzip,deflate,compress" } })
       .then(function (response: any) {
