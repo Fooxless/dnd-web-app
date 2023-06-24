@@ -28,7 +28,7 @@ export default async function monsters(
             page,
             search,
             limit: PAGE_LIMIT,
-            // Only get monsters from system-reference
+            // Only get monsters from DnD SRD
             document__slug__iexact: DOCUMENT_SLUG,
         },
     });

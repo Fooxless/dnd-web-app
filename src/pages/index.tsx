@@ -6,9 +6,10 @@ import Sorter from "../components/sortby";
 import Filter from "../components/filterby";
 import Search from "../components/searchbar";
 import { useEffect, useState } from "react";
-import { Pagination } from "@mui/material";
+
 import { useMonstersQuery } from "../front-end-api/hooks/hooks";
 import { QueryStateIndicator } from "../front-end-api/reactQueryProvider";
+import { Pagination, Stack, TablePagination } from "@mui/material";
 
 const Home: NextPage = () => {
     const { data: session } = useSession();
@@ -16,14 +17,20 @@ const Home: NextPage = () => {
     // const [filterby, setFilterby] = useState("");
     const [search, setSearchquery] = useState("");
     const [page, setPage] = useState(1);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+
     console.log("search", search);
-    const monstersQuery = useMonstersQuery({
+    const { data: monstersQueryData, isLoading } = useMonstersQuery({
         ordering,
         page,
         search,
     });
 
-    console.log("monstersQuery", monstersQuery);
+    console.log("monstersQueryData.count", monstersQueryData?.count);
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
 
     return (
         <div className="page-container bg-[#1e293b]">
@@ -48,10 +55,29 @@ const Home: NextPage = () => {
                             {/* <Filter setSortby={setFilterby} /> */}
                         </div>
                     </div>
-                    <QueryStateIndicator isLoading={monstersQuery.isLoading}>
-                        <Grid monsters={monstersQuery?.data} />
+                    <QueryStateIndicator isLoading={isLoading}>
+                        <Stack>
+                            <Grid monsters={monstersQueryData} />
+                            <Pagination
+                                count={Math.ceil(monstersQueryData?.count / 20)}
+                                page={page}
+                                onChange={handleChange}
+                                sx={{
+                                    button: {
+                                        color: "white",
+                                        "&:hover": {
+                                            backgroundColor:
+                                                "rgb(25,118,210, 0.5)",
+                                        },
+                                    },
+                                    alignSelf: "center",
+                                    display: "flex",
+                                    mt: 4,
+                                }}
+                                color="primary"
+                            />
+                        </Stack>
                     </QueryStateIndicator>
-                    {/* <Pagination page={page} setPage={setPage} count={monsters?.count} /> */}
                 </div>
             </main>
         </div>

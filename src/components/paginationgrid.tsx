@@ -9,6 +9,10 @@ interface PaginationProps {
 export default function Pagination(props: any) {
     const { page, setPage, count } = props;
 
+    if (count === undefined) {
+        return null;
+    }
+
     function clickForward() {
         setPage(page + 1);
     }
@@ -64,55 +68,57 @@ export default function Pagination(props: any) {
     };
 
     return (
-        <div className="flex items-center justify-between px-4 py-3 sm:px-6 mt-3">
-            <div className="flex flex-1 items-center justify-center">
-                <div>
-                    <nav
-                        className=" isolate inline-flex -space-x-px rounded-md shadow-sm bg-gray-700 border-gray-600 text-white "
-                        aria-label="Pagination"
-                    >
-                        <button
-                            onClick={clickBack}
-                            className="relative inline-flex items-center rounded-l-md border border-gray-600 px-2 py-2 text-sm font-medium hover:bg-gray-600 focus:z-20"
-                        >
-                            <span className="sr-only">Previous</span>
-                            <ChevronLeftIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                            />
-                        </button>
-                        {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
-                        {renderPages()}
+        <Pagination count={10} shape="rounded" />
 
-                        <button
-                            onClick={clickForward}
-                            className="relative inline-flex items-center rounded-r-md border border-gray-600  px-2 py-2 text-sm font-medium hover:bg-gray-600 focus:z-20"
-                        >
-                            <span className="sr-only">Next</span>
-                            <ChevronRightIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                            />
-                        </button>
-                    </nav>
-                    <div>
-                        <p className="text-sm mt-3 text-white justify-center flex">
-                            <div>
-                                Showing{" "}
-                                <span className="font-medium">
-                                    {page === 1 ? page : (page - 1) * 20 + 1}
-                                </span>{" "}
-                                to{" "}
-                                <span className="font-medium">
-                                    {page * 20 < count ? page * 20 : count}
-                                </span>{" "}
-                                of <span className="font-medium">{count}</span>{" "}
-                                monsters
-                            </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        // <div className="flex items-center justify-between px-4 py-3 sm:px-6 mt-3">
+        //     <div className="flex flex-1 items-center justify-center">
+        //         <div>
+        //             <nav
+        //                 className=" isolate inline-flex -space-x-px rounded-md shadow-sm bg-gray-700 border-gray-600 text-white "
+        //                 aria-label="Pagination"
+        //             >
+        //                 <button
+        //                     onClick={clickBack}
+        //                     className="relative inline-flex items-center rounded-l-md border border-gray-600 px-2 py-2 text-sm font-medium hover:bg-gray-600 focus:z-20"
+        //                 >
+        //                     <span className="sr-only">Previous</span>
+        //                     <ChevronLeftIcon
+        //                         className="h-5 w-5"
+        //                         aria-hidden="true"
+        //                     />
+        //                 </button>
+        //                 {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+        //                 {renderPages()}
+
+        //                 <button
+        //                     onClick={clickForward}
+        //                     className="relative inline-flex items-center rounded-r-md border border-gray-600  px-2 py-2 text-sm font-medium hover:bg-gray-600 focus:z-20"
+        //                 >
+        //                     <span className="sr-only">Next</span>
+        //                     <ChevronRightIcon
+        //                         className="h-5 w-5"
+        //                         aria-hidden="true"
+        //                     />
+        //                 </button>
+        //             </nav>
+        //             <div>
+        //                 <p className="text-sm mt-3 text-white justify-center flex">
+        //                     <div>
+        //                         Showing{" "}
+        //                         <span className="font-medium">
+        //                             {page === 1 ? page : (page - 1) * 20 + 1}
+        //                         </span>{" "}
+        //                         to{" "}
+        //                         <span className="font-medium">
+        //                             {page * 20 < count ? page * 20 : count}
+        //                         </span>{" "}
+        //                         of <span className="font-medium">{count}</span>{" "}
+        //                         monsters
+        //                     </div>
+        //                 </p>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
     );
 }
