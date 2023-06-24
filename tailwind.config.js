@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 
@@ -10,9 +10,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Roboto", 'sans-serif']
+        sans: ["Roboto", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
+};

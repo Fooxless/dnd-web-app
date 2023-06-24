@@ -5,24 +5,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 @layer base {
-    body {
-        @apply bg-[#fefbf6];
+  body {
+    @apply bg-[#fefbf6];
+  }
 
-    }
-
-    html,
-    body,
-    div#__next {
-        height: 100%;
-    }
+  html,
+  body,
+  div#__next {
+    height: 100%;
+  }
 }
 
 @layer components {
-    .items-grid {
-        grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-    }
+  .items-grid {
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  }
 
-    .page-container {
-        min-height: calc(100vh - 120px);
-    }
+  .page-container {
+    min-height: calc(100vh - 120px);
+  }
 }
