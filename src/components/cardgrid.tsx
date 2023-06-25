@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Card from "./card";
 
 interface CardGridProps {
@@ -6,14 +7,22 @@ interface CardGridProps {
 
 export default function CardGrid({ monsters }: CardGridProps) {
     if (!monsters) return null;
-    console.log("monsters", monsters);
+
     return (
-        <div className="grid items-grid gap-8 px-6 place-items-center pt-8">
+        <Box
+            sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr));",
+                gap: 3,
+                p: 3,
+                justifyItems: "center",
+            }}
+        >
             {monsters?.results?.map((monster: any) => (
-                <div key={monster?.name}>
+                <Box key={monster?.name}>
                     {monster && <Card key={monster?.name} monster={monster} />}
-                </div>
+                </Box>
             ))}
-        </div>
+        </Box>
     );
 }

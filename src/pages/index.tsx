@@ -3,21 +3,21 @@ import Head from "next/head";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Grid from "../components/cardgrid";
 import Sorter from "../components/sortby";
-import Filter from "../components/filterby";
+
 import Search from "../components/searchbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useMonstersQuery } from "../front-end-api/hooks/hooks";
 import { QueryStateIndicator } from "../front-end-api/reactQueryProvider";
-import { Pagination, Stack, TablePagination } from "@mui/material";
+import { Box, Pagination, Stack } from "@mui/material";
+import Filter from "../components/filterby";
 
 const Home: NextPage = () => {
     const { data: session } = useSession();
     const [ordering, setSortby] = useState("");
-    // const [filterby, setFilterby] = useState("");
+    const [filterby, setFilterby] = useState("");
     const [search, setSearchquery] = useState("");
     const [page, setPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     console.log("search", search);
     const { data: monstersQueryData, isLoading } = useMonstersQuery({
@@ -33,7 +33,13 @@ const Home: NextPage = () => {
     };
 
     return (
-        <div className="page-container bg-[#1e293b]">
+        <Box
+            sx={{
+                bgcolor: "#1e293b",
+
+                minHeight: "80%",
+            }}
+        >
             <Head>
                 <title>DND Web App</title>
                 <meta
@@ -42,45 +48,41 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
-            <main className="text-white pb-20 pt-6 ">
-                <div>
-                    <div className="ml-20 relative sm:flex sm:ml-10 justify-center">
+            <Box sx={{ color: "white", pb: 20, pt: 6 }}>
+                <Box display="flex" justifyContent="center">
+                    <Stack direction={"row"} spacing={2}>
                         <Search
                             setSearchquery={setSearchquery}
                             setPage={setPage}
                         />
-                        <div className="sm:ml-10 flex mt-6 sm:mt-0">
-                            <Sorter setSortby={setSortby} />
-                            {/* <Filter setSortby={setFilterby} /> */}
-                        </div>
-                    </div>
-                    <QueryStateIndicator isLoading={isLoading}>
-                        <Stack>
-                            <Grid monsters={monstersQueryData} />
-                            <Pagination
-                                count={Math.ceil(monstersQueryData?.count / 20)}
-                                page={page}
-                                onChange={handleChange}
-                                sx={{
-                                    button: {
-                                        color: "white",
-                                        "&:hover": {
-                                            backgroundColor:
-                                                "rgb(25,118,210, 0.5)",
-                                        },
+                        <Sorter setSortby={setSortby} />
+                        {/* <Filter setFilterby={setFilterby} /> */}
+                    </Stack>
+                </Box>
+                <QueryStateIndicator isLoading={isLoading}>
+                    <Stack>
+                        <Grid monsters={monstersQueryData} />
+                        <Pagination
+                            count={Math.ceil(monstersQueryData?.count / 20)}
+                            page={page}
+                            onChange={handleChange}
+                            sx={{
+                                button: {
+                                    color: "white",
+                                    "&:hover": {
+                                        backgroundColor: "rgb(25,118,210, 0.5)",
                                     },
-                                    alignSelf: "center",
-                                    display: "flex",
-                                    mt: 4,
-                                }}
-                                color="primary"
-                            />
-                        </Stack>
-                    </QueryStateIndicator>
-                </div>
-            </main>
-        </div>
+                                },
+                                alignSelf: "center",
+                                display: "flex",
+                                mt: 4,
+                            }}
+                            color="primary"
+                        />
+                    </Stack>
+                </QueryStateIndicator>
+            </Box>
+        </Box>
     );
 };
 

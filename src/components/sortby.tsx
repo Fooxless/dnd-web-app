@@ -19,12 +19,10 @@ export default function Sorter(props: any) {
     const { setSortby } = props;
 
     return (
-        <div className="flex items-center space-x-2 ">
-            <DropDown
-                defaultValue="Sort"
-                options={sortOptions}
-                setSortby={setSortby}
-            />
-        </div>
+        <DropDown
+            defaultValue="Sort"
+            options={sortOptions}
+            setSortby={setSortby}
+        />
     );
 }
