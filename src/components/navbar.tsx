@@ -3,9 +3,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 const navigation = [
-    { name: "Monsters", href: "#", current: true },
+    { name: "Monsters", href: "/", current: true },
     // { name: "Encounters", href: "#", current: false },
     // { name: 'Spells', href: '#', current: false },
     // { name: 'Items', href: '#', current: false },
@@ -17,7 +18,7 @@ function classNames(...classes: any) {
 
 export default function Navbar() {
     const { data: session } = useSession();
-    console.log(session);
+
     return (
         <Disclosure as="nav" className="dark:bg-gray-900">
             {({ open }) => (
@@ -63,7 +64,7 @@ export default function Navbar() {
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <Link
                                                 key={item.name}
                                                 href={item.href}
                                                 className={classNames(
@@ -79,7 +80,7 @@ export default function Navbar() {
                                                 }
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 import qs from "query-string";
 import { localApi } from "../axiosSetupFrontend";
+import { Monster } from "../../types/types";
 
 export interface getMonstersArgs {
     page: number;
@@ -7,9 +8,16 @@ export interface getMonstersArgs {
     search: string;
 }
 
-export const getMonsters = async (args: getMonstersArgs): Promise<any> => {
+export interface getMonsterReponse {
+    count: number;
+    results: Monster[];
+}
+
+export const getMonsters = async (
+    args: getMonstersArgs
+): Promise<getMonsterReponse> => {
     const { page, ordering, search } = args;
-    console.log("args", args);
+
     const url = qs.stringifyUrl({
         url: "monsters",
         query: {
@@ -19,7 +27,7 @@ export const getMonsters = async (args: getMonstersArgs): Promise<any> => {
         },
     });
 
-    const { data } = await localApi.local.get(url);
+    const { data } = await localApi.local.get<getMonsterReponse>(url);
 
     return data;
 };

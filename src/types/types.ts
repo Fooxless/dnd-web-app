@@ -32,7 +32,7 @@ export type Monster = {
     legendary_desc: string;
     name: string;
     page_no: number;
-    perception: null; // figure out
+    perception: number; // figure out
     reactions: string;
     senses: string;
     size: string;

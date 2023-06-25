@@ -1,45 +1,41 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Grid from "../components/cardgrid";
 import Sorter from "../components/sortby";
 
 import Search from "../components/searchbar";
 import { useState } from "react";
-
 import { useMonstersQuery } from "../front-end-api/hooks/hooks";
 import { QueryStateIndicator } from "../front-end-api/reactQueryProvider";
 import { Box, Pagination, Stack } from "@mui/material";
-import Filter from "../components/filterby";
+import { PageWrapper } from "../components/pagewrapper";
+// import Filter from "../components/filterby";
 
 const Home: NextPage = () => {
     const { data: session } = useSession();
     const [ordering, setSortby] = useState("");
-    const [filterby, setFilterby] = useState("");
+    // const [filterby, setFilterby] = useState("");
     const [search, setSearchquery] = useState("");
     const [page, setPage] = useState(1);
 
-    console.log("search", search);
     const { data: monstersQueryData, isLoading } = useMonstersQuery({
         ordering,
         page,
         search,
     });
 
-    console.log("monstersQueryData.count", monstersQueryData?.count);
-
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
     };
 
-    return (
-        <Box
-            sx={{
-                bgcolor: "#1e293b",
+    let pageCount;
 
-                minHeight: "80%",
-            }}
-        >
+    if (monstersQueryData?.count !== undefined)
+        pageCount = Math.ceil(monstersQueryData?.count / 20);
+
+    return (
+        <PageWrapper>
             <Head>
                 <title>DND Web App</title>
                 <meta
@@ -48,7 +44,7 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Box sx={{ color: "white", pb: 20, pt: 6 }}>
+            <Box sx={{ pb: 20, pt: 6 }}>
                 <Box display="flex" justifyContent="center">
                     <Stack direction={"row"} spacing={2}>
                         <Search
@@ -61,9 +57,9 @@ const Home: NextPage = () => {
                 </Box>
                 <QueryStateIndicator isLoading={isLoading}>
                     <Stack>
-                        <Grid monsters={monstersQueryData} />
+                        <Grid monsters={monstersQueryData?.results} />
                         <Pagination
-                            count={Math.ceil(monstersQueryData?.count / 20)}
+                            count={pageCount}
                             page={page}
                             onChange={handleChange}
                             sx={{
@@ -82,7 +78,7 @@ const Home: NextPage = () => {
                     </Stack>
                 </QueryStateIndicator>
             </Box>
-        </Box>
+        </PageWrapper>
     );
 };
 

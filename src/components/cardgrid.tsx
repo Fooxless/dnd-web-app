@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
 import Card from "./card";
+import { Monster } from "../types/types";
 
 interface CardGridProps {
-    monsters: any;
+    monsters: Monster[] | undefined;
 }
 
 export default function CardGrid({ monsters }: CardGridProps) {
@@ -18,7 +19,7 @@ export default function CardGrid({ monsters }: CardGridProps) {
                 justifyItems: "center",
             }}
         >
-            {monsters?.results?.map((monster: any) => (
+            {monsters?.map((monster: Monster) => (
                 <Box key={monster?.name}>
                     {monster && <Card key={monster?.name} monster={monster} />}
                 </Box>

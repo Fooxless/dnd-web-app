@@ -1,10 +1,16 @@
-import { getMonsters, getMonstersArgs } from "../requests/monsters";
+import {
+    getMonsterReponse,
+    getMonsters,
+    getMonstersArgs,
+} from "../requests/monsters";
 import { UseQueryResult, useQuery } from "react-query";
 
 export const useMonstersQuery = (
     args: getMonstersArgs
-): UseQueryResult<any | undefined> => {
+): UseQueryResult<getMonsterReponse | undefined> => {
     const options = { ...args };
-    console.log("options", options);
-    return useQuery<any>(["fetchMonster", options], () => getMonsters(options));
+
+    return useQuery<getMonsterReponse>(["fetchMonster", options], () =>
+        getMonsters(options)
+    );
 };
