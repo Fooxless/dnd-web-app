@@ -1,29 +1,52 @@
+import { Box, Stack, Typography } from "@mui/material";
+
 export default function Card({ monster: monster }: any | undefined) {
     function cardClicked() {
         console.log("Have been clicked");
     }
 
     return (
-        <div>
-            <div
-                className="text-gray-700 transform bg-[#B7C2D4] w-80 transition duration-500 hover:scale-110 hover:bg-[#9DA8BA] flex justify-center items-center cursor-pointer"
-                onClick={cardClicked}
+        <Box
+            sx={{
+                bgcolor: "#B7C2D4",
+                color: "#374151",
+                "&:hover": {
+                    background: "#9DA8BA",
+                    transform: "scale3d(1.1, 1.1, 1)",
+                },
+                width: 300,
+                py: 2,
+                px: 4,
+                transition: "transform 0.20s ease-in-out",
+            }}
+            onClick={cardClicked}
+        >
+            <Box sx={{ mb: 3 }}>
+                <Typography variant="h6" fontWeight="bold">
+                    {monster?.name}
+                </Typography>
+                <Typography variant="body1" fontWeight="bold">
+                    {`${monster?.type.toUpperCase()}, ${monster?.alignment.toUpperCase()}`}
+                </Typography>
+            </Box>
+
+            <Stack
+                direction="row"
+                sx={{
+                    justifyContent: "space-between",
+                    font: "bold",
+                }}
             >
-                <div className="max-w-sm overflow-hidden shadow-lg w-full ">
-                    <div className="px-6 py-4">
-                        <div className="font-bold mb-2">
-                            <div className="text-xl"> {monster?.name} </div>
-                            <p>{`${monster?.type.toUpperCase()}, ${monster?.alignment.toUpperCase()}`}</p>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div className="px-3 pb-4 font-bold flex items-center justify-around">
-                        <p>CR : {monster?.challenge_rating}</p>
-                        <p>HP: {monster?.hit_points}</p>
-                        <p>AC: {monster?.armor_class}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <Typography variant="body1" fontWeight="bold">
+                    CR : {monster?.challenge_rating}
+                </Typography>
+                <Typography variant="body1" fontWeight="bold">
+                    HP: {monster?.hit_points}
+                </Typography>
+                <Typography variant="body1" fontWeight="bold">
+                    AC: {monster?.armor_class}
+                </Typography>
+            </Stack>
+        </Box>
     );
 }
