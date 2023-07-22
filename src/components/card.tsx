@@ -1,7 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { Monster } from "../types/types";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export interface CardProps {
     monster: Monster;
