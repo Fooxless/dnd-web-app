@@ -6,7 +6,7 @@ interface CardGridProps {
     monsters: Monster[] | undefined;
 }
 
-export default function CardGrid({ monsters }: CardGridProps) {
+export default function MonsterCardGrid({ monsters }: CardGridProps) {
     if (!monsters) return null;
 
     return (

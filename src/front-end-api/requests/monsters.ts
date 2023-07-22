@@ -8,14 +8,14 @@ export interface getMonstersArgs {
     search: string;
 }
 
-export interface getMonsterReponse {
+export interface getMonstersReponse {
     count: number;
     results: Monster[];
 }
 
 export const getMonsters = async (
     args: getMonstersArgs
-): Promise<getMonsterReponse> => {
+): Promise<getMonstersReponse> => {
     const { page, ordering, search } = args;
 
     const url = qs.stringifyUrl({
@@ -27,7 +27,7 @@ export const getMonsters = async (
         },
     });
 
-    const { data } = await localApi.local.get<getMonsterReponse>(url);
+    const { data } = await localApi.local.get<getMonstersReponse>(url);
 
     return data;
 };

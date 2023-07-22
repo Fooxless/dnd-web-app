@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-import Grid from "../components/cardgrid";
+import MonsterCardGrid from "../components/cardgrid";
 import Sorter from "../components/sortby";
 
 import Search from "../components/searchbar";
@@ -57,7 +57,9 @@ const Home: NextPage = () => {
                 </Box>
                 <QueryStateIndicator isLoading={isLoading}>
                     <Stack>
-                        <Grid monsters={monstersQueryData?.results} />
+                        <MonsterCardGrid
+                            monsters={monstersQueryData?.results}
+                        />
                         <Pagination
                             count={pageCount}
                             page={page}

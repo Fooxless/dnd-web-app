@@ -13,6 +13,9 @@ export default function Card({ monster }: CardProps) {
                 pathname: "/monsterPage",
                 query: { monsterSlug: monster.slug },
             }}
+            onClick={() => {
+                localStorage.setItem("monster", JSON.stringify(monster));
+            }}
         >
             <Box
                 sx={{
