@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { Monster } from "../../../types/types";
 import { InfoWrapper } from "../../common/infoWrapper";
-import SavingThrows from "./Components/SavingThrows";
+import SavingThrows from "../Components/SavingThrows";
 
-import StatBadge from "./Components/StatBadge";
-import StatBadgeList from "./Components/StatBadgeList";
+import StatBadge from "../Components/StatBadge";
+import StatBadgeList from "../Components/StatBadgeList";
 
 interface MonsterMainDetailsProps {
     monster: Monster;

@@ -1,4 +1,4 @@
-import { Monster } from "../../../../types/types";
+import { Monster } from "../../../types/types";
 
 interface SavingThrowsProps {
     monster: Monster;

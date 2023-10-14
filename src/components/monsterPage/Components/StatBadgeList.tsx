@@ -1,6 +1,6 @@
 import { Chip, Stack, Typography } from "@mui/material";
 
-import { titleCase } from "../../../common/helperFunc";
+import { titleCase } from "../../common/helperFunc";
 
 interface StatBadgeListProps {
     items: string[];
@@ -8,7 +8,7 @@ interface StatBadgeListProps {
 }
 
 export default function StatBadgeList({ items, name }: StatBadgeListProps) {
-    if (items[0].length === 0) {
+    if (items.length == 0 || items[0]?.length === 0) {
         return null;
     }
     return (

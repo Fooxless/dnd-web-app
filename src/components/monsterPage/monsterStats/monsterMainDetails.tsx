@@ -3,8 +3,8 @@ import * as React from "react";
 import { Monster } from "../../../types/types";
 import { InfoWrapper } from "../../common/infoWrapper";
 import { titleCase } from "../../common/helperFunc";
-import StatBadge from "./Components/StatBadge";
-import StatBadgeList from "./Components/StatBadgeList";
+import StatBadge from "../Components/StatBadge";
+import StatBadgeList from "../Components/StatBadgeList";
 
 interface MonsterMainDetailsProps {
     monster: Monster;

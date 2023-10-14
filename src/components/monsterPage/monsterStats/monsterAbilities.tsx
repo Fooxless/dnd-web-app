@@ -3,7 +3,7 @@ import * as React from "react";
 import { Monster } from "../../../types/types";
 import { InfoWrapper } from "../../common/infoWrapper";
 
-import DescriptionBadge from "./Components/DescriptionBadge";
+import DescriptionBadge from "../Components/DescriptionBadge";
 
 interface MonsterAbilitiesProps {
     monster: Monster;

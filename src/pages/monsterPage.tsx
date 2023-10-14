@@ -8,6 +8,7 @@ import { Monster } from "../types/types";
 
 import MonsterStats from "../components/monsterPage/monsterStats";
 import { titleCase } from "../components/common/helperFunc";
+import MosnterActions from "../components/monsterPage/monsterActions";
 
 const MonsterPage: NextPage = () => {
     const monster = JSON.parse(
@@ -30,7 +31,7 @@ const MonsterPage: NextPage = () => {
                 </Typography>
                 <CenteredTabs value={value} setValue={setValue} />
                 {value == 0 && <MonsterStats monster={monster} />}
-                {value == 1 && <>Actions</>}
+                {value == 1 && <MosnterActions monster={monster} />}
                 {value == 2 && <>Spells</>}
             </Stack>
         </PageWrapper>
