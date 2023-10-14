@@ -20,7 +20,7 @@ export default function StatBadge({ value, name }: BadgeListProps) {
                 sx={{
                     m: 0.5,
                     bgcolor: "#9DB2BF",
-                    px: 0.5,
+
                     py: 0.5,
                     height: "auto",
                     "& .MuiChip-label": {

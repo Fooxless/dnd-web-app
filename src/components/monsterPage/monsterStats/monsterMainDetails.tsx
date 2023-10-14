@@ -25,7 +25,10 @@ export default function MonsterMainDetails({
             sxProps={{ height: "fit-content", flexWrap: "wrap", py: 2 }}
         >
             <StatBadge value={monster.armor_class} name={"Armor Class"} />
-            <StatBadge value={monster.hit_points} name={"Hit Points"} />
+            <StatBadge
+                value={`${monster.hit_points} (${monster.hit_dice})`}
+                name={"Hit Points"}
+            />
             <StatBadgeList items={speeds} name={"Speed"} />
         </InfoWrapper>
     );
