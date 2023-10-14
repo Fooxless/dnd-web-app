@@ -14,13 +14,12 @@ export const InfoWrapper = ({
     return (
         <Stack
             bgcolor="#526D82"
-            width={"50%"}
+            width={"100%"}
             minWidth={350}
             direction="row"
             spacing={spacing ?? 2}
             borderRadius={2}
             height={90}
-            display="flex"
             alignItems="center"
             justifyContent="space-evenly"
             mt={3}

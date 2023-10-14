@@ -18,8 +18,8 @@ export default function MonsterStats({ monster }: MonsterStatsProps) {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                flexWrap: "wrap",
             }}
+            width="50%"
             spacing={2}
             mb={5}
         >
