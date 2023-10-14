@@ -25,8 +25,8 @@ export default function CenteredTabs({ value, setValue }: CenteredTabsProps) {
             }}
         >
             <Tab label="Stats" />
+            <Tab label="Actions" />
             <Tab label="Spells" />
-            <Tab label="Background" />
         </Tabs>
     );
 }

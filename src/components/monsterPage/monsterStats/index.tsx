@@ -2,8 +2,10 @@ import * as React from "react";
 
 import MonsterStatBar from "./monsterStatBar";
 import { Monster } from "../../../types/types";
-import MonsterDetails from "./monsterDetails";
+import MonsterMainDetails from "./monsterMainDetails";
+import MonsterExtraDetails from "./monsterExtraDetails";
 import { Stack } from "@mui/material";
+import MonsterAbilities from "./monsterAbilities";
 
 interface MonsterStatsProps {
     monster: Monster;
@@ -11,9 +13,20 @@ interface MonsterStatsProps {
 
 export default function MonsterStats({ monster }: MonsterStatsProps) {
     return (
-        <>
+        <Stack
+            sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+            }}
+            spacing={2}
+            mb={5}
+        >
+            <MonsterMainDetails monster={monster} />
             <MonsterStatBar monster={monster} />
-            <MonsterDetails monster={monster} />
-        </>
+            <MonsterExtraDetails monster={monster} />
+            <MonsterAbilities monster={monster} />
+        </Stack>
     );
 }

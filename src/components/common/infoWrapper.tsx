@@ -3,11 +3,13 @@ import { PropsWithChildren } from "react";
 
 interface InfoWrapperProps {
     sxProps?: SxProps<Theme>;
+    spacing?: number;
 }
 
 export const InfoWrapper = ({
     sxProps,
     children,
+    spacing,
 }: PropsWithChildren<InfoWrapperProps>) => {
     return (
         <Stack
@@ -15,9 +17,10 @@ export const InfoWrapper = ({
             width={"50%"}
             minWidth={350}
             direction="row"
-            spacing={2}
+            spacing={spacing ?? 2}
             borderRadius={2}
             height={90}
+            display="flex"
             alignItems="center"
             justifyContent="space-evenly"
             mt={3}
