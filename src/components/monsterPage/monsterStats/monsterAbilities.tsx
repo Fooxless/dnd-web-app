@@ -10,6 +10,10 @@ interface MonsterAbilitiesProps {
 }
 
 export default function MonsterAbilities({ monster }: MonsterAbilitiesProps) {
+    if (monster.special_abilities === null) {
+        return null;
+    }
+
     return (
         <InfoWrapper
             sxProps={{
