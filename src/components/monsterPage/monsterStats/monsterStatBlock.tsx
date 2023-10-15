@@ -20,6 +20,8 @@ export default function MonsterStatBlock({
     stat,
     statType,
 }: MonsterStatBlockProps) {
+    const statBonus = Math.floor((stat - 10) / 2);
+
     return (
         <Stack
             width={"100%"}
@@ -56,7 +58,7 @@ export default function MonsterStatBlock({
                 color={"black"}
                 fontSize={12}
             >
-                +{Math.floor((stat - 10) / 2)}
+                {`${statBonus > 0 ? "+" : ""}${statBonus}`}
             </Box>
         </Stack>
     );

@@ -39,7 +39,10 @@ export default function MonsterExtraDetails({
             />
             <StatBadgeList items={senses} name={"Senses"} />
             <StatBadgeList items={languages} name={"Languages"} />
-            <StatBadge value={monster.challenge_rating} name={"Challenge"} />
+            <StatBadge
+                value={monster.challenge_rating}
+                name={"Challenge Rating"}
+            />
         </InfoWrapper>
     );
 }
