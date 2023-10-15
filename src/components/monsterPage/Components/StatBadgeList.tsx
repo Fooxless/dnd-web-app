@@ -1,6 +1,7 @@
-import { Chip, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 import { titleCase } from "../../common/helperFunc";
+import StyledChip from "./StyledChip";
 
 interface StatBadgeListProps {
     items: string[];
@@ -34,24 +35,7 @@ export default function StatBadgeList({ items, name }: StatBadgeListProps) {
                 }}
             >
                 {items.map((item) => (
-                    <Chip
-                        sx={{
-                            bgcolor: "#9DB2BF",
-                            m: 0.5,
-                            py: 0.5,
-                            height: "auto",
-                            "& .MuiChip-label": {
-                                display: "block",
-                                whiteSpace: "normal",
-                            },
-                        }}
-                        key={item}
-                        label={
-                            <Typography color="white" variant="body2">
-                                {titleCase(item)}
-                            </Typography>
-                        }
-                    />
+                    <StyledChip value={titleCase(item)} key={item} />
                 ))}
             </Stack>
         </Stack>

@@ -1,4 +1,5 @@
-import { Chip, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import StyledChip from "./StyledChip";
 
 interface BadgeListProps {
     value: string | number;
@@ -16,24 +17,7 @@ export default function StatBadge({ value, name }: BadgeListProps) {
             }}
         >
             <Typography mr={1}>{name}</Typography>
-            <Chip
-                sx={{
-                    m: 0.5,
-                    bgcolor: "#9DB2BF",
-
-                    py: 0.5,
-                    height: "auto",
-                    "& .MuiChip-label": {
-                        display: "block",
-                        whiteSpace: "normal",
-                    },
-                }}
-                label={
-                    <Typography color="white" variant="body1">
-                        {value}
-                    </Typography>
-                }
-            />
+            <StyledChip value={value} />
         </Stack>
     );
 }

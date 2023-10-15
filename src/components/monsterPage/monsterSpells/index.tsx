@@ -2,14 +2,17 @@ import { Stack } from "@mui/material";
 import * as React from "react";
 import { Monster } from "../../../types/types";
 
-import MonsterMainActions from "./monsterMainActions";
-import MonsterLegendaryActions from "./monsterLegendaryActions";
+import MonsterSpellList from "./monsterSpellList";
 
-interface MosnterActionsProps {
+interface MonsterSpellsProps {
     monster: Monster;
 }
 
-export default function MosnterActions({ monster }: MosnterActionsProps) {
+export default function MonsterSpells({ monster }: MonsterSpellsProps) {
+    if (monster.spell_list.length === 0) {
+        return <>Sorry, this creatue has no spells.</>;
+    }
+
     return (
         <Stack
             sx={{
@@ -21,8 +24,7 @@ export default function MosnterActions({ monster }: MosnterActionsProps) {
             spacing={2}
             mb={5}
         >
-            <MonsterMainActions monster={monster} />
-            <MonsterLegendaryActions monster={monster} />
+            <MonsterSpellList monster={monster} />
         </Stack>
     );
 }

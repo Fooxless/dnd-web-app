@@ -19,7 +19,6 @@ export default async function monsters(
     }
 
     const { ordering, page, search } = req.query;
-    console.log("req.query", req.query);
 
     const url = qs.stringifyUrl({
         url: "monsters",

@@ -10,6 +10,8 @@ import MonsterStats from "../components/monsterPage/monsterStats";
 import { titleCase } from "../components/common/helperFunc";
 import MosnterActions from "../components/monsterPage/monsterActions";
 
+import MonsterSpells from "../components/monsterPage/monsterSpells";
+
 const MonsterPage: NextPage = () => {
     const monster = JSON.parse(
         localStorage.getItem("monster") as string
@@ -32,7 +34,7 @@ const MonsterPage: NextPage = () => {
                 <CenteredTabs value={value} setValue={setValue} />
                 {value == 0 && <MonsterStats monster={monster} />}
                 {value == 1 && <MosnterActions monster={monster} />}
-                {value == 2 && <>Spells</>}
+                {value == 2 && <MonsterSpells monster={monster} />}
             </Stack>
         </PageWrapper>
     );
