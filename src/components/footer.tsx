@@ -3,12 +3,13 @@ const Footer = () => {
         <footer id="footer" className="relative z-50 dark:bg-gray-900 pt-24">
             <div className=" border-t border-b border-gray-200 dark:border-gray-700 py-16">
                 <div className="flex flex-col justify-center items-center ">
-                    <p className="mt-2 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">
-                        Created by Connor Gryphon
-                    </p>
-
+                    <a href="https://connordev.au/">
+                        <p className="mt-2 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">
+                            Created by Connor Gryphon
+                        </p>
+                    </a>
                     <div className="flex items-center mt-3">
-                        <a href="https://github.com/Fooxless/Portfolio-Connor-Gryphon">
+                        <a href="https://github.com/Fooxless">
                             <div className="text-gray-800 dark:text-gray-50 cursor-pointer hover:text-brand dark:hover:text-brand">
                                 <svg
                                     className="feather feather-github"

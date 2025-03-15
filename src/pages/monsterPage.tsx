@@ -17,8 +17,6 @@ const MonsterPage: NextPage = () => {
         localStorage.getItem("monster") as string
     ) as Monster;
     const [value, setValue] = useState(0);
-    console.log("monster", monster);
-
     return (
         <PageWrapper>
             <Stack alignItems="center" pt={2}>

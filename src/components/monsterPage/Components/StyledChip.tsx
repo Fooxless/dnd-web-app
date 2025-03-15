@@ -18,7 +18,7 @@ export default function StyledChip({ value }: BadgeListProps) {
                 },
             }}
             label={
-                <Typography color="white" variant="body1">
+                <Typography color="#374151" variant="body1" fontWeight={"bold"}>
                     {value}
                 </Typography>
             }

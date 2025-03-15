@@ -16,7 +16,9 @@ export default function StatBadge({ value, name }: BadgeListProps) {
                 justifyContent: "center",
             }}
         >
-            <Typography mr={1}>{name}</Typography>
+            <Typography mr={1} fontWeight={"bold"}>
+                {name}
+            </Typography>
             <StyledChip value={value} />
         </Stack>
     );

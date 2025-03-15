@@ -20,7 +20,7 @@ export default async function spells(
     const promises = (spellUrls as string[]).map(
         async (spellUrl) =>
             await api.open5e.get(
-                spellUrl.replace("https://api.open5e.com/", "")
+                spellUrl.replace("https://api.open5e.com/v2/", "") // add here
             )
     );
 
@@ -30,6 +30,6 @@ export default async function spells(
         return res.status(200).json(response.map((res) => res.data));
     } catch (error) {
         // handle error
-        return res.status(200).json({ error: true, message: error });
+        return res.status(500).json({ error: true, message: error });
     }
 }

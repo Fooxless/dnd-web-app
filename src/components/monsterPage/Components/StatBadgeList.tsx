@@ -23,7 +23,7 @@ export default function StatBadgeList({ items, name }: StatBadgeListProps) {
                 mb: 1,
             }}
         >
-            <Typography>{name}</Typography>
+            <Typography fontWeight={"bold"}>{name}</Typography>
             <Stack
                 direction="row"
                 sx={{

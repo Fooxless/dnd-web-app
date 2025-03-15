@@ -17,7 +17,9 @@ export default function DescriptionBadge({
                 justifyContent: "center",
             }}
         >
-            <Typography variant="h6">{name}</Typography>
+            <Typography variant="h6" fontWeight={"bold"}>
+                {name}
+            </Typography>
             <Chip
                 sx={{
                     m: 0.5,
@@ -32,9 +34,10 @@ export default function DescriptionBadge({
                 }}
                 label={
                     <Typography
-                        color="white"
+                        color="#374151"
                         variant="body1"
                         style={{ whiteSpace: "pre-line" }}
+                        fontWeight={"bold"}
                     >
                         {typeof value === "string"
                             ? value.replaceAll("*", "")

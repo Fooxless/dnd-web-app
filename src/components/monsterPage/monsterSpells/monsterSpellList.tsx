@@ -23,8 +23,6 @@ export default function MonsterSpellList({ monster }: MonsterSpellListProps) {
     const { data: spells, isLoading } = useSpellsQuery({
         spellUrls: monster.spell_list,
     });
-    console.log("spells", spells);
-
     return (
         <Box sx={{ my: 2, minWidth: 350 }}>
             <QueryStateIndicator isLoading={isLoading}>
@@ -59,7 +57,7 @@ export default function MonsterSpellList({ monster }: MonsterSpellListProps) {
                                         alignItems: "center",
                                     }}
                                 >
-                                    <Typography>
+                                    <Typography fontWeight={"bold"}>
                                         {spell.name}
                                         {spell.requires_concentration && (
                                             <StyledChip value={"C"} />

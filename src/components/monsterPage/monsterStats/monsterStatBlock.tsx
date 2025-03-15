@@ -29,6 +29,7 @@ export default function MonsterStatBlock({
             alignItems="center"
             justifyContent="center"
             pb={1}
+            fontWeight={"bold"}
         >
             {statType}
             <Box
